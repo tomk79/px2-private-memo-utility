@@ -49,12 +49,12 @@ a要素、area要素、form要素に、 `rel="noopener noreferrer"` を付与し
 
 ### allow_highlight
 
-TBD
+[hightlight.js](https://highlightjs.org/) を挿入します。
 
 
 ## 更新履歴 - Change log
 
-### tomk79/px2-private-memo-utility v0.1.0 (リリース日未定)
+### tomk79/px2-private-memo-utility v0.1.0 (2022年6月18日)
 
 - Initial Release
 
