@@ -97,6 +97,14 @@ class main{
 			}
 
 			if( $this->options->hide_referrer ){
+				$ret = $html->find('a,area,form');
+				foreach( $ret as $retRow ){
+					$deftarget = $retRow->getAttribute('target');
+					if( $this->options->hide_referrer === 'target_blank' && $deftarget != '_blank' ){
+						continue;
+					}
+					$retRow->setAttribute('rel', 'noopener noreferrer');
+				}
 			}
 
 			if( $this->options->allow_highlight ){

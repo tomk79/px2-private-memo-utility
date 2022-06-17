@@ -29,6 +29,28 @@ $conf->funcs->processor->html = [
 ];
 ```
 
+## オプション
+
+### auto_link_target_blank
+
+a要素に、`target=_blank` を自動的に付与します。
+
+a要素の `href` 属性値が `http://` または `https://` から始まる場合に、 `target=_blank` を付与します。
+
+予め `target` 属性がセットされている a要素には影響しません。
+
+
+### hide_referrer
+
+a要素、area要素、form要素に、 `rel="noopener noreferrer"` を付与します。
+
+`hide_referrer => target_blank` を設定した場合は、 `target` 属性が `_blank` となっている要素にのみ影響します。
+
+
+### allow_highlight
+
+TBD
+
 
 ## 更新履歴 - Change log
 

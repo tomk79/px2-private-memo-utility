@@ -3,3 +3,19 @@
     <li><a href="./child1/">child 1</a></li>
     <li><a href="https://pickles2.pxt.jp/">About Pickles 2</a></li>
 </ul>
+
+<form method="GET" action="./child1/">
+    <button>child1</button>
+</form>
+
+<h2>Referrer</h2>
+
+<pre>
+<?php
+
+if( isset( $_SERVER['HTTP_REFERER'] ) ){
+    echo $_SERVER['HTTP_REFERER'];
+}
+
+?>
+</pre>
