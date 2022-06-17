@@ -89,9 +89,6 @@ return call_user_func( function(){
 
 		// px2-serve
 		tomk79\pickles2\px2serve\serve::register(),
-
-		// px2-serve
-		tomk79\pickles2\px2PrivateMemoUtility\main::register(),
 	];
 
 	// funcs: Before content
@@ -111,6 +108,13 @@ return call_user_func( function(){
 	$conf->funcs->processor->html = [
 		// ページ内目次を自動生成する
 		'picklesFramework2\processors\autoindex\autoindex::exec' ,
+
+		// プライベートメモユーティリティ: コンテンツ加工処理
+		\tomk79\pickles2\px2PrivateMemoUtility\main::processor( [
+			"auto_link_target_blank" => true,
+			"hide_referrer" => true,
+			"allow_highlight" => true,
+		] ),
 
 		// テーマ
 		'theme'=>'picklesFramework2\theme\theme::exec' ,
