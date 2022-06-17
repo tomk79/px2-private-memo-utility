@@ -13,7 +13,21 @@ composer require tomk79/px2-private-memo-utility;
 
 ### セットアップ
 
-TBD
+```php
+$conf->funcs->processor->html = [
+
+    /* 〜〜 中略 〜〜 */
+
+    // Private Memo Utility: コンテンツ加工処理
+    \tomk79\pickles2\px2PrivateMemoUtility\main::processor( [
+        "auto_link_target_blank" => true,
+        "hide_referrer" => true,
+        "allow_highlight" => true,
+    ] ),
+
+    /* 〜〜 中略 〜〜 */
+];
+```
 
 
 ## 更新履歴 - Change log

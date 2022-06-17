@@ -81,6 +81,19 @@ class main{
 
 
 			if( $this->options->auto_link_target_blank ){
+				$ret = $html->find('a[href]');
+				foreach( $ret as $retRow ){
+					$href = $retRow->getAttribute('href');
+					$deftarget = $retRow->getAttribute('target');
+					if( $deftarget ){
+						// target属性が明示されている場合は、それを尊重する
+						continue;
+					}
+
+					if( preg_match( '/^(?:https?\:\/\/)/i', $href ) ){
+						$retRow->setAttribute('target', '_blank');
+					}
+				}
 			}
 
 			if( $this->options->hide_referrer ){
