@@ -2,6 +2,13 @@
 
 - [About Pickles 2](https://pickles2.pxt.jp/)
 
+
+```html
+<p>
+    This is Highlight Sample.<br />
+</p>
+```
+
 ---
 
 [戻る](../)

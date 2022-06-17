@@ -81,6 +81,8 @@ class main{
 
 
 			if( $this->options->auto_link_target_blank ){
+				// --------------------------------------
+				// target=_blank の自動付与
 				$ret = $html->find('a[href]');
 				foreach( $ret as $retRow ){
 					$href = $retRow->getAttribute('href');
@@ -97,6 +99,8 @@ class main{
 			}
 
 			if( $this->options->hide_referrer ){
+				// --------------------------------------
+				// noopener noreferrer の自動付与
 				$ret = $html->find('a,area,form');
 				foreach( $ret as $retRow ){
 					$deftarget = $retRow->getAttribute('target');
@@ -107,14 +111,40 @@ class main{
 				}
 			}
 
-			if( $this->options->allow_highlight ){
-			}
-
-
 			$src = $html->outertext;
 			$src = mb_convert_encoding( $src, $detect_encoding );
             $this->px->bowl()->replace( $src, $key );
         }
+
+
+		if( $this->options->allow_highlight ){
+			// --------------------------------------
+			// highlighter を挿入する
+			// highlight.js
+			// https://highlightjs.org/
+			// Thank you for Ivan Sagalaev and contributors!
+			ob_start(); ?>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/atom-one-light.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+<script>
+hljs.highlightAll();
+</script>
+<?php
+			$highlighter = ob_get_clean();
+            $src = $this->px->bowl()->get( 'main' );
+			if( preg_match('/(?:\<\/body\>)/', $src) ){
+				// bodyの閉じタグを探す。
+				// 見つかった場合、theme適用後と判断して、閉じタグ直前に追加する
+				$src = preg_replace('/(?:\<\/body\>)/', $highlighter, $src);
+				$this->px->bowl()->replace($src, 'main');
+			}else{
+				// </body>が見つからない場合は、theme適用前とみなす。
+				// foot に挿入する。
+				$this->px->bowl()->put( $highlighter, 'foot' );
+			}
+
+		}
+
 
 		return;
 	}
