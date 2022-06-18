@@ -101,8 +101,12 @@ class main{
 			if( $this->options->hide_referrer ){
 				// --------------------------------------
 				// noopener noreferrer の自動付与
-				$ret = $html->find('a,area,form');
+				$ret = $html->find('a[href],area,form');
 				foreach( $ret as $retRow ){
+					$href = $retRow->getAttribute('href');
+					if( preg_match('/^(?:javascript\:|data\:|\#)/i', $href) ){
+						continue;
+					}
 					$deftarget = $retRow->getAttribute('target');
 					if( $this->options->hide_referrer === 'target_blank' && $deftarget != '_blank' ){
 						continue;

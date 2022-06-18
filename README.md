@@ -54,6 +54,10 @@ a要素、area要素、form要素に、 `rel="noopener noreferrer"` を付与し
 
 ## 更新履歴 - Change log
 
+### tomk79/px2-private-memo-utility v0.1.1 (リリース日未定)
+
+- `hide_referrer`: 発動条件を修正
+
 ### tomk79/px2-private-memo-utility v0.1.0 (2022年6月18日)
 
 - Initial Release
